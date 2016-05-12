@@ -1,0 +1,48 @@
+aWeather.
+
+controller('indexController', ['$scope', 'weatherService', '$timeout', function($scope, weatherService, $timeout) {
+
+    function init() {
+
+        $scope.current = null;
+        $scope.error = null;
+        $scope.loading = true;
+
+        chrome.browserAction.setBadgeText({ text: '' });
+
+        return weatherService.getCurrent(function(err, data) {
+
+            $scope.loading = false;
+
+            if (err) {
+                return $scope.error = err;
+            }
+
+            $scope.current = data.weather;
+
+            $scope.updated = new moment(data.weather.dt * 1000).format('MMM Do HH:mm');
+
+            var badgeText = [];
+
+            if (data.weather.main.temp > 0) {
+                badgeText.push('+');
+            } else if (data.weather.main.temp < 0) {
+                badgeText.push('-');
+            }
+
+            badgeText.push(Math.round(data.weather.main.temp));
+
+            chrome.browserAction.setBadgeText({ text: badgeText.join('') });
+        });
+    }
+
+    $scope.retry = function() {
+
+        $scope.loading = true;
+
+        // Add ui delay
+        return $timeout(init, 400);
+    };
+
+    return init();
+}]);

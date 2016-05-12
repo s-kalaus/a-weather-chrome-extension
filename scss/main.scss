@@ -1,0 +1,113 @@
+$fa-font-path: '/bower_components/font-awesome/fonts';
+
+@import '../bower_components/font-awesome/scss/font-awesome';
+
+.aw-body{
+    width: 150px;
+    font-family: arial;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: default;
+    padding: 5px 15px;
+    -webkit-user-select: none;
+
+    a{
+        color: #000;
+    }
+}
+
+.aw-loader{
+    position: relative;
+
+    &.aw-loading{
+
+        &:after{
+            content: '';
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            position: absolute;
+            background: #fff;
+            opacity: 0.6;
+            background: url(/images/loader.gif) no-repeat 50% 50%;
+        }
+
+        .aw-loader-content{
+            visibility: hidden;
+        }
+    }
+}
+
+.aw-widget{
+
+    .aw-widget-main{
+
+        overflow: hidden;
+
+        .aw-weather-condition{
+
+            float: left;
+            margin: 0 20px 0 0;
+            width: 50px;
+
+            img{
+                display: block;
+                height: 50px;
+            }
+        }
+
+        .aw-weather-temperature{
+
+            line-height: 50px;
+            text-align: right;
+            font-weight: bold;
+
+            .aw-weather-temperature-dir,.aw-weather-temperature-value{
+                font-size: 30px;
+            }
+
+            .aw-weather-temperature-unit{
+                font-size: 16px;
+            }
+        }
+    }
+
+    .aw-widget-info{
+
+        padding: 0;
+        margin: 0 0 10px 0;
+        list-style: none;
+
+        label{
+            font-weight: bold;
+        }
+
+        .fa-long-arrow-up{
+            width: 16px;
+            text-align: center;
+            display: inline-block;
+        }
+    }
+
+    .aw-widget-city{
+
+        float: left;
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 11px;
+        color: #888;
+    }
+
+    .aw-widget-updated{
+
+        text-align: right;
+        font-size: 11px;
+        color: #888;
+    }
+}
+
+.aw-error{
+    text-align: center;
+}

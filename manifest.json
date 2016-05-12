@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "Cool Weather",
+    "description": "Shows temperature and weather conditions for your location",
+    "version": "1.0",
+
+    "browser_action": {
+        "default_icon": "images/icon.png",
+        "default_popup": "index.html"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+        "http://a-weather.kalaus.ru/"
+    ]
+}

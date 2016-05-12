@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="aWeather">
+    <head>
+        <title>Cool Weather</title>
+        <link rel="stylesheet" href="build/%build_id%/stylesheets/main.css">
+        <script src="build/%build_id%/javascripts/all.js"></script>
+    </head>
+    <body class="aw-body">
+
+        <div ng-controller="indexController" class="aw-loader" ng-class="{'aw-loading': loading}">
+
+            <div class="aw-error aw-loader-content" ng-if="error">
+                {{ error }}
+                <br />
+                <a href="" ng-click="retry()">Retry</a>
+            </div>
+
+            <div class="aw-widget aw-loader-content" ng-if="current">
+
+                <div class="aw-widget-main">
+
+                    <div class="aw-weather-condition">
+                        <img ng-src="{{ current.weather[0].iconUrl }}" alt="{{ current.weather[0].description }}" title="{{ current.weather[0].description }}" />
+                    </div>
+
+                    <div class="aw-weather-temperature">
+                        <span class="aw-weather-temperature-dir">{{ current.main.temp > 0 ? '+' : (current.main.temp < 0 ? '-' : '') }}</span><span class="aw-weather-temperature-value">{{ current.main.temp | number:0 }}</span>
+                        <span class="aw-weather-temperature-unit">&deg;C</span>
+                    </div>
+                </div>
+
+                <ul class="aw-widget-info">
+
+                    <li>
+
+                        <label>Wind:</label>
+
+                        <span class="aw-widget-info-value">
+                            {{ current.wind.speed | number:0 }}m/s
+                            <i class="fa fa-long-arrow-up" ng-style="{'transform': 'rotate(' + current.wind.deg + 'deg)'}"></i>
+                        </span>
+                    </li>
+
+                    <li>
+
+                        <label>Humidity:</label>
+
+                        <span class="aw-widget-info-value">{{ current.main.humidity | number:0 }}%</span>
+                    </li>
+
+                    <li>
+
+                        <label>Pressure:</label>
+
+                        <span class="aw-widget-info-value">{{ current.main.pressure | number:0 }}hPa</span>
+                    </li>
+                </ul>
+
+                <div class="aw-widget-city">{{ current.name }}</div>
+                <div class="aw-widget-updated">{{ updated }}</div>
+            </div>
+        </div>
+    </body>
+</html>
+
