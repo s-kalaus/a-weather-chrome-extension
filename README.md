@@ -3,6 +3,8 @@ a-weather-chrome-extension
 
 Built using AngularJS, basic API support, gulp assembling, karma for tests
 
+Google Chrome published extension: https://chrome.google.com/webstore/detail/cool-weather/noagogpcknhhblmofkmabnamipcgpeop
+
 ===============
 #Installation
 

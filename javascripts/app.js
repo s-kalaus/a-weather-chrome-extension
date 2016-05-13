@@ -11,6 +11,9 @@ var aWeather = angular.module('aWeather', [
             browserAction: {
                 setBadgeText: function(text) {
                     console.log('Badge Text: "' + text.text + '"');
+                },
+                setIcon: function(path) {
+                    console.log('Badge Icon: "' + path.path + '"');
                 }
             }
         };

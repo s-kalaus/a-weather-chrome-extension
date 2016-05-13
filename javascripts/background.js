@@ -6,6 +6,10 @@ aWeather.run(['configService', '$interval', 'weatherService', function (configSe
 
         chrome.browserAction.setBadgeText({ text: '' });
 
+        chrome.browserAction.setIcon({
+            path: 'images/icon128.png'
+        });
+
         return weatherService.getCurrent(function(err, data) {
 
             if (err) {
@@ -23,6 +27,12 @@ aWeather.run(['configService', '$interval', 'weatherService', function (configSe
             badgeText.push(Math.round(data.weather.main.temp));
 
             chrome.browserAction.setBadgeText({ text: badgeText.join('') });
+
+            if (data.weather && data.weather.weather && data.weather.weather.length && data.weather.weather[0].iconUrl) {
+                chrome.browserAction.setIcon({
+                    path: data.weather.weather[0].iconUrl
+                });
+            }
         });
     }
 
