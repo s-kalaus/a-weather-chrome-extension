@@ -32,5 +32,5 @@ Point document root of webserver to directory with extension. Open SERVER_NAME i
 ### Production deployment
 
 * gulp production
-* Remove everything except: images, build, manifest.json, index.html, background.js
+* Remove everything except: images, build, manifest.json, index.html, background.js, bower_components/font-awesome/fonts
 * Pack
