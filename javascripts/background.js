@@ -24,7 +24,7 @@ aWeather.run(['configService', '$interval', 'weatherService', function (configSe
                 badgeText.push('-');
             }
 
-            badgeText.push(Math.round(data.weather.main.temp));
+            badgeText.push(Math.abs(Math.round(data.weather.main.temp)));
 
             chrome.browserAction.setBadgeText({ text: badgeText.join('') });
 
